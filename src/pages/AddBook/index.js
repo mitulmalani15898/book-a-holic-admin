@@ -103,7 +103,7 @@ function AddBook() {
       if (addBook.header === "Add Book") {
         let addApiResponse = await create(formData);
         if (addApiResponse.status === 200) {
-          navigate("/");
+          navigate("/books");
         } else {
           setApiError(true);
         }

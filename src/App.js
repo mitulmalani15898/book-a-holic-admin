@@ -11,9 +11,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path ="/admin/books" element = {<Books/>}></Route>
-          <Route path ="/admin/books/add" element = {<AddBook/>}></Route>
-          <Route path ="/admin/books/edit" element = {<AddBook/>}></Route>
+          <Route path ="/books" element = {<Books/>}></Route>
+          <Route path ="/books/add" element = {<AddBook/>}></Route>
+          <Route path ="/books/edit" element = {<AddBook/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
