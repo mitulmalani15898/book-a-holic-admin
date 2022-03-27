@@ -1,0 +1,72 @@
+.book-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.title {
+  font-weight: bold;
+  margin: 10px 0 15px;
+  text-align: left;
+}
+
+.td{
+  display: inline-block;
+  width: 200px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.books-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  border-radius: 10px 10px 0 0;
+}
+
+.books-table-container {
+  padding: 15px 10px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  border-radius: 0 0 10px 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.books-table {
+  margin-bottom: 0 !important;
+}
+
+.books-pagination {
+  margin: 20px 0 0;
+  justify-content: flex-end;
+}
+
+.page-link {
+  padding: 4px 12px !important;
+}
+.pagination-button {
+  background-color: black !important;
+}
+.page-link {
+  color: black !important;
+}
+.page-item.active .page-link {
+  color: white !important;
+  background-color: black !important;
+}
+
+@media screen and (max-width: 576px) {
+  .book-container {
+    padding: 0 10px;
+  }
+  .title {
+    text-align: center;
+  }
+  .books-header {
+    flex-direction: column-reverse;
+  }
+}

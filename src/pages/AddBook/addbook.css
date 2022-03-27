@@ -1,0 +1,24 @@
+.addbook-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+.addbook-title {
+  font-weight: bold;
+  margin: 20px 0 30px;
+  text-align: left;
+}
+.addbook-element {
+  margin: 5px 0px 5px;
+}
+.addbook-submit-button{
+  display: flex;
+  align-items: center;
+  text-align: center;
+ }
+.submit{
+  display: flex;
+  margin: 20px 0px 20px;
+  margin-left: 50%;
+}

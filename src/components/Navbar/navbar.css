@@ -1,0 +1,24 @@
+.custom-navbar {
+  background-color: #20232a !important;
+}
+
+.nav-cont {
+  max-width: unset !important;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 20px !important;
+}
+.logout{
+  display:flex;
+  justify-content: flex-end;
+}
+.profile-icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-cont {
+    margin: 0 10px !important;
+  } 
+}
