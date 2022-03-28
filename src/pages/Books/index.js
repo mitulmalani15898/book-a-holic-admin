@@ -19,7 +19,8 @@ function Books() {
   const [search, setSearch] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [bookToBeDeleted,setBookToBeDeleted] = useState("");
-
+  const [isError,setError] = useState(false);
+  const [errorMessage,setErrorMessage] = useState("");
   const toggleModal = () => {
     setOpenModal((prev) => !prev);
   };
@@ -39,10 +40,15 @@ function Books() {
     toggleModal();
   }
   const getDataFromBookApi = async () => {
-    const booksFromApi = await getAll();
-    console.log(booksFromApi.data);
-    setBooks(booksFromApi.data.data);
-    setFilteredBooks(booksFromApi.data.data);
+    try {
+      const booksFromApi = await getAll();
+      console.log(booksFromApi.data);
+      setBooks(booksFromApi.data.data);
+      setFilteredBooks(booksFromApi.data.data);      
+    } catch (error) {
+      setErrorMessage(error.message);
+      setError(true);
+    }
   };
 
   const handleSearchChange = (event) => {
@@ -111,6 +117,7 @@ function Books() {
           {/* {addBook && <Alert variant="success" dismissible onClose={() => setAddBook(false)}>Book added.</Alert>}
         {editBook && <Alert variant="info" dismissible onClose={() => setEditBook(false)}>Book edited.</Alert>}
         {deleteBook && <Alert variant="danger" dismissible onClose={() => setDeleteBook(false)}>Book deleted.</Alert>} */}
+        {isError && <Alert variant="danger" dismissible onClose={() => setError(false)}>{errorMessage}</Alert>}
           <Table striped bordered hover size="sm" className="books-table">
             <thead>
               <tr>
@@ -129,17 +136,6 @@ function Books() {
             </thead>
             <tbody>{renderBookTableData()}</tbody>
           </Table>
-          <Pagination className="books-pagination">
-            <Pagination.First variant="dark" />
-            <Pagination.Prev variant="dark" />
-            <Pagination.Item className="pagination-button">{1}</Pagination.Item>
-            <Pagination.Item active>{2}</Pagination.Item>
-            <Pagination.Item>{3}</Pagination.Item>
-            <Pagination.Ellipsis />
-            <Pagination.Item disabled>{14}</Pagination.Item>
-            <Pagination.Next />
-            <Pagination.Last />
-          </Pagination>
         </div>
       </div>
     </>

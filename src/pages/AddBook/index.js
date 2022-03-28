@@ -25,7 +25,7 @@ function AddBook() {
     author: book?.author || "",
     isbn: book?.isbn || "",
     year: book?.year || "",
-    price: book?.price ? book?.price+"" : "",
+    price: book?.price ? book?.price + "" : "",
     actualPrice: book?.actualPrice || "",
     image: "",
     book: "",
@@ -69,10 +69,10 @@ function AddBook() {
       errors.year = "year cannot be blank";
     }
 
-    if (!price === "") {
+    if (!price || price.trim() === "") {
       errors.price = "price cannot be blank";
     }
-    if (!actualPrice === "") {
+    if (!actualPrice || actualPrice.trim() === "") {
       errors.actualPrice = "actual price cannot be blank";
     }
 
@@ -87,7 +87,6 @@ function AddBook() {
     if (Object.keys(errorsFound).length > 0) {
       setErrors(errorsFound);
     } else {
-      alert("Submitting the form");
       const formData = new FormData();
       formData.append("files", addBook.image);
       formData.append("files", addBook.book);
@@ -101,25 +100,23 @@ function AddBook() {
       formData.append("actualPrice", addBook.actualPrice);
 
       if (addBook.header === "Add Book") {
-        let addApiResponse = await create(formData);
-        if (addApiResponse.status === 200) {
+        try {
+          let addApiResponse = await create(formData);
           navigate("/books");
-        } else {
+          console.log(addApiResponse);
+        } catch (error) {
           setApiError(true);
         }
-        console.log(addApiResponse);
       } else {
-        console.log("Editing book");
-        formData.append("_id", addBook._id);
-        const editApiResponse = await edit(addBook);
-        if (editApiResponse.status === 200) {
-          navigate("/");
-        } else {
+        try {
+          console.log("Editing book");
+          formData.append("_id", addBook._id);
+          const editApiResponse = await edit(addBook);
+          console.log(editApiResponse);
+        } catch (error) {
           setApiError(true);
         }
-        console.log(editApiResponse);
       }
-      // create(addBook);
     }
   };
 
@@ -157,11 +154,12 @@ function AddBook() {
           <Col>
             <Form.Group className="addbook-element">
               <Form.Label>Category</Form.Label>
-              <Form.Select aria-label = "Select Category"
-                value = {addBook.category}
+              <Form.Select
+                aria-label="Select Category"
+                value={addBook.category}
                 isInvalid={!!errors.category}
                 onChange={(event) => {
-                  setAddBook({ ...addBook, category: event.target.value });   
+                  setAddBook({ ...addBook, category: event.target.value });
                   if (!!errors.category) {
                     setErrors({ ...errors, category: null });
                   }
@@ -170,7 +168,6 @@ function AddBook() {
                 <option>Select Category</option>
                 <option>Mystery</option>
                 <option>Literature</option>
-
               </Form.Select>
               <Form.Control.Feedback type="invalid">
                 {errors.category}
