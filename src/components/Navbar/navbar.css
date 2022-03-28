@@ -8,8 +8,8 @@
   padding: 0 20px;
   margin: 0 20px !important;
 }
-.logout{
-  display:flex;
+.logout {
+  display: flex;
   justify-content: flex-end;
 }
 .profile-icon {
@@ -20,5 +20,5 @@
 @media screen and (max-width: 768px) {
   .nav-cont {
     margin: 0 10px !important;
-  } 
+  }
 }
