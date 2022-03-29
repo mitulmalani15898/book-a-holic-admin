@@ -1,3 +1,4 @@
+/** @author Prit Thakkar (B00890731)*/ 
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +7,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 import "./navbar.css";
 
+/**
+ * 
+ * @returns the Navbar component - used in the admin panel
+ */
 function NavbarComponent() {
   const navigate = useNavigate();
 
