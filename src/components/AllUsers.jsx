@@ -1,3 +1,7 @@
+/** Author : JAINAM SHAH
+ */
+
+
 import {
   Button,
   Table,
@@ -9,7 +13,6 @@ import {
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { getUsers, deleteUser } from "../services/api";
-//import { getUsers, deleteUser } from "../Services/api";
 import { Link } from "react-router-dom";
 
 const useStyle = makeStyles({
@@ -37,8 +40,7 @@ const useStyle = makeStyles({
 function AllUsers() {
   const [users, setUsers] = useState([]);
   const classes = useStyle();
-  //  const navigate = useNavigate();
-  const [searchItem, setsearchItem] = useState("");
+    const [searchItem, setsearchItem] = useState("");
 
   useEffect(() => {
     getAllUsers();
@@ -54,10 +56,7 @@ function AllUsers() {
     await deleteUser(id);
     getAllUsers();
   };
-  // const handleClick = (user) => {
-  //   console.log("value of paramms", user);
-  //   navigate("/edit/${user}");
-  // };
+
 
   return (
     <div>
