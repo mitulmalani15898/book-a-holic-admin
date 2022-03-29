@@ -1,3 +1,5 @@
+/** @author Prit Thakkar (B00890731)*/ 
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Alert, Table, Pagination } from "react-bootstrap";
@@ -8,12 +10,13 @@ import "./books.css";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import DeleteBookModal from "../../components/DeleteBookModal";
 import { remove } from "../../services/books.service";
-
+/** 
+ * @returns the book component, which is essentially a responsive table showing all the books 
+ * available in the database.
+ * 
+ */
 function Books() {
   const navigate = useNavigate();
-  const [addBook, setAddBook] = useState(false);
-  const [editBook, setEditBook] = useState(false);
-  const [deleteBook, setDeleteBook] = useState(false);
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [search, setSearch] = useState("");

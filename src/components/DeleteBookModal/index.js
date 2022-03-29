@@ -1,8 +1,15 @@
+/** @author Prit Thakkar (B00890731) */
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./delete-book.css";
 
+/**
+ * 
+ * @param { show, handleClose, handleBookDelete } for showing, closing and handling the book
+ * delete event. 
+ * @returns the delete modal for book deletion.
+ */
 function DeleteBookModal({show, handleClose, handleBookDelete}) {
   return (
     <Modal show={show} onHide={handleClose}>

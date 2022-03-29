@@ -1,3 +1,7 @@
+/** @author Prit Thakkar (B00890731) */
+/**
+ * Contains all the http utility methods to add,edit and remove data in various book components.
+ */
 import http from "../http-common";
 const getAll = () => {
   return http.get("/books");

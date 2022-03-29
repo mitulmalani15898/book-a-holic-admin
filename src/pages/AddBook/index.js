@@ -1,3 +1,5 @@
+/** @author Prit Thakkar (B00890731)*/ 
+
 import React, { useState, useEffect } from "react";
 
 import {
@@ -12,6 +14,29 @@ import {
 import { useLocation, useNavigate } from "react-router-dom";
 import { create, edit } from "../../services/books.service";
 import "./addbook.css";
+
+/**  
+  The AddBook.js contains code which allows a user (here admin) to add a book to 
+  the existing book repository stored in the database (here MongoDB).
+
+  @param
+
+  category : specifies the category of book (dropdown)
+  book desription : text
+  author : text
+  isbn : text
+  year : text
+  price : text
+  actualPrice : text
+  image : file (thumbnail file for the book)
+  book : file (eBook version of the book)
+
+  --
+
+  Also, The AddBook.js supports editing the book, as I have reused the add component to provision edit
+  functionality with regards to books.
+
+*/
 
 function AddBook() {
   const navigate = useNavigate();
@@ -36,6 +61,10 @@ function AddBook() {
 
   const [errors, setErrors] = useState({});
 
+  /**
+   * 
+   * @returns errors in books
+   */
   const findErrorInBookForm = () => {
     const {
       _id,
@@ -53,25 +82,31 @@ function AddBook() {
     if (!title || title.trim() === "") {
       errors.title = "title cannot be blank";
     }
+    // category
     if (!category || category.trim() === "") {
       errors.category = "category cannot be blank";
     }
+    // description
     if (!bookDescription || bookDescription.trim() === "") {
       errors.bookDescription = "bookDescription cannot be blank";
     }
+    // author
     if (!author || author.trim() === "") {
       errors.author = "author cannot be blank";
     }
+    //isbn
     if (!isbn || isbn.trim() === "") {
       errors.isbn = "isbn cannot be blank";
     }
+    //year
     if (!year || year.trim() === "") {
       errors.year = "year cannot be blank";
     }
-
+    // price
     if (!price || price.trim() === "") {
       errors.price = "price cannot be blank";
     }
+    // actual price
     if (!actualPrice || actualPrice.trim() === "") {
       errors.actualPrice = "actual price cannot be blank";
     }
@@ -80,6 +115,10 @@ function AddBook() {
     return errors;
   };
 
+  /**
+   * 
+   * @param {*} event - action on the submit event (add/edit)
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("handling submit");
@@ -120,6 +159,9 @@ function AddBook() {
     }
   };
 
+  /**
+   * @returns the Add / Edit component
+   */
   return (
     <div className="addbook-container">
       <h3 className="addbook-title">{addBook.header}</h3>
