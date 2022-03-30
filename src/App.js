@@ -8,13 +8,13 @@ import AllUsers from "./components/AllUsers";
 import EditUser from "./components/EditUser";
 import PageNotFound from "./components/PageNotFound";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path = "/" element = {<Books/>}></Route>
+          <Route path="/" element={<Books />}></Route>
           <Route path="/books" element={<Books />}></Route>
           <Route path="/books/add" element={<AddBook />}></Route>
           <Route path="/books/edit" element={<AddBook />}></Route>
@@ -26,6 +26,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

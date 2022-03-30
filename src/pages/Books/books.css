@@ -2,21 +2,28 @@
 /* css for the book component */
 
 .book-container {
-  max-width: 1200px;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 30px 80px;
   margin: 0 auto;
 }
 
 .title {
   font-weight: bold;
   margin: 10px 0 15px;
-  text-align: left;
+  text-align: center;
 }
 
-.td{
+th {
+ text-align: center !important;
+}
+
+th, td {
+  padding: 10px 20px !important;
+}
+
+.td {
   display: inline-block;
-  width: 200px !important;
+  width: 300px !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

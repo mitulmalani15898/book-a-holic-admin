@@ -1,4 +1,4 @@
-/** @author Prit Thakkar (B00890731)*/ 
+/** @author Prit Thakkar (B00890731)*/
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,44 +10,46 @@ import "./books.css";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import DeleteBookModal from "../../components/DeleteBookModal";
 import { remove } from "../../services/books.service";
-/** 
- * @returns the book component, which is essentially a responsive table showing all the books 
+/**
+ * @returns the book component, which is essentially a responsive table showing all the books
  * available in the database.
- * 
+ *
  */
 function Books() {
   const navigate = useNavigate();
+
   const [books, setBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const [bookToBeDeleted,setBookToBeDeleted] = useState("");
-  const [isError,setError] = useState(false);
-  const [errorMessage,setErrorMessage] = useState("");
+  const [bookToBeDeleted, setBookToBeDeleted] = useState("");
+  const [isError, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const toggleModal = () => {
     setOpenModal((prev) => !prev);
   };
 
-  const handleDeleteClick = (bookId) => () =>{
+  const handleDeleteClick = (bookId) => () => {
     console.log(bookId);
-    console.log("here");
     toggleModal();
     setBookToBeDeleted(bookId);
-  }
+  };
 
-  const handleBookDelete = async () =>  {
-    console.log("Bokkde");
+  const handleBookDelete = async () => {
     const response = await remove(bookToBeDeleted);
-    setFilteredBooks(prev=>prev.filter(item=>item._id!=bookToBeDeleted));
+    setFilteredBooks((prev) =>
+      prev.filter((item) => item._id != bookToBeDeleted)
+    );
     setBookToBeDeleted("");
     toggleModal();
-  }
+  };
   const getDataFromBookApi = async () => {
     try {
       const booksFromApi = await getAll();
       console.log(booksFromApi.data);
       setBooks(booksFromApi.data.data);
-      setFilteredBooks(booksFromApi.data.data);      
+      setFilteredBooks(booksFromApi.data.data);
     } catch (error) {
       setErrorMessage(error.message);
       setError(true);
@@ -79,6 +81,20 @@ function Books() {
       } = book;
       return (
         <tr key={_id}>
+          <td>{index + 1}</td>
+          <td>
+            <Link to="/books/edit" state={book}>
+              <FontAwesomeIcon icon={faEdit} color="#0166b2" />
+            </Link>
+          </td>
+          <td>
+            <FontAwesomeIcon
+              style={{ cursor: "pointer" }}
+              icon={faTrashAlt}
+              color="#db1818"
+              onClick={handleDeleteClick(book._id)}
+            />
+          </td>
           <td>{title}</td>
           <td>{category}</td>
           <td className="td">{bookDescription}</td>
@@ -88,14 +104,6 @@ function Books() {
           <td>{year}</td>
           <td>{imageUrl}</td>
           <td>{bookUrl}</td>
-          <td>
-            <Link to="/books/edit" state={book}>
-              <FontAwesomeIcon icon={faEdit} color="#5946c2" />
-            </Link>
-          </td>
-          <td>
-            <FontAwesomeIcon icon={faTrashAlt} color="#f04a3a" onClick={handleDeleteClick(book._id)} />
-          </td>
         </tr>
       );
     });
@@ -107,7 +115,11 @@ function Books() {
 
   return (
     <>
-      <DeleteBookModal show={openModal} handleClose={toggleModal} handleBookDelete={handleBookDelete} />
+      <DeleteBookModal
+        show={openModal}
+        handleClose={toggleModal}
+        handleBookDelete={handleBookDelete}
+      />
       <div className="book-container">
         <h3 className="title">Books</h3>
         <div className="books-header">
@@ -120,10 +132,17 @@ function Books() {
           {/* {addBook && <Alert variant="success" dismissible onClose={() => setAddBook(false)}>Book added.</Alert>}
         {editBook && <Alert variant="info" dismissible onClose={() => setEditBook(false)}>Book edited.</Alert>}
         {deleteBook && <Alert variant="danger" dismissible onClose={() => setDeleteBook(false)}>Book deleted.</Alert>} */}
-        {isError && <Alert variant="danger" dismissible onClose={() => setError(false)}>{errorMessage}</Alert>}
+          {isError && (
+            <Alert variant="danger" dismissible onClose={() => setError(false)}>
+              {errorMessage}
+            </Alert>
+          )}
           <Table striped bordered hover size="sm" className="books-table">
             <thead>
               <tr>
+                <th>#</th>
+                <th></th>
+                <th></th>
                 <th>Book Name</th>
                 <th>Category ID</th>
                 <th className="td">Description</th>
@@ -133,8 +152,6 @@ function Books() {
                 <th>Year</th>
                 <th>Image URL</th>
                 <th>Book URL</th>
-                <th></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>{renderBookTableData()}</tbody>
