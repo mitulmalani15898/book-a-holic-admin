@@ -1,4 +1,4 @@
-/** @author Prit Thakkar (B00890731)*/ 
+/** @author Prit Thakkar (B00890731)*/
 
 import React, { useState, useEffect } from "react";
 
@@ -62,7 +62,7 @@ function AddBook() {
   const [errors, setErrors] = useState({});
 
   /**
-   * 
+   *
    * @returns errors in books
    */
   const findErrorInBookForm = () => {
@@ -116,7 +116,7 @@ function AddBook() {
   };
 
   /**
-   * 
+   *
    * @param {*} event - action on the submit event (add/edit)
    */
   const handleSubmit = async (event) => {
@@ -374,13 +374,10 @@ function AddBook() {
             </Form.Group>
           </Col>
         </Row>
-        <Row>
-          <Col className="addbook-submit-buttons">
-            <Button className="submit" value="submit" type="submit">
-              {addBook.button}
-            </Button>
-          </Col>
-        </Row>
+
+        <Button variant="dark" className="submit" value="submit" type="submit">
+          {addBook.button}
+        </Button>
       </Form>
     </div>
   );
