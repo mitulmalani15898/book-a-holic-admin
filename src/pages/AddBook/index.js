@@ -103,11 +103,11 @@ function AddBook() {
       errors.year = "year cannot be blank";
     }
     // price
-    if (!price || price.trim() === "") {
+    if (!price) {
       errors.price = "price cannot be blank";
     }
     // actual price
-    if (!actualPrice || actualPrice.trim() === "") {
+    if (!actualPrice) {
       errors.actualPrice = "actual price cannot be blank";
     }
 
@@ -151,7 +151,7 @@ function AddBook() {
           console.log("Editing book");
           formData.append("_id", addBook._id);
           const editApiResponse = await edit(addBook);
-          console.log(editApiResponse);
+          navigate("/books")
         } catch (error) {
           setApiError(true);
         }
