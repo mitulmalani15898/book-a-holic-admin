@@ -4,7 +4,7 @@ Bookaholic : Books at your fingertips is a web-based eBook store where users can
 This is the group project repository for the course CSCI 5709 - Advanced Topics in Web Development instructed by Professor Maria Gabriella Mosquera.
 
 - _Date Created_: 5 Feb 2022
-- _Last Modification Date_: 29 MAR 2022
+- _Last Modification Date_: 11 APR 2022
 - _Deployed Application URL_: <https://bookaholic-admin.herokuapp.com>
 - _Git Repository URL_: <https://git.cs.dal.ca/pthakkar/group3_csci5709_admin>
 - _Admin Username_ : bookaholicadmin@gmail.com
