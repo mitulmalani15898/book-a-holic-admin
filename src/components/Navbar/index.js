@@ -1,9 +1,9 @@
 /** @author Prit Thakkar (B00890731)*/
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { Navigate, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { isLoggedIn } from "../../utils/common";
 
 import "./navbar.css";
 
@@ -25,34 +25,48 @@ function NavbarComponent() {
         >
           Book-a-holic Admin
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
-            <Nav.Link
-              onClick={(e) => {
-                navigate("/books");
-              }}
-            >
-              Books
-            </Nav.Link>
-            <Nav.Link
-              onClick={(e) => {
-                navigate("/users");
-              }}
-            >
-              Users
-            </Nav.Link>
-          </Nav>
-          {/* <FontAwesomeIcon
+        {isLoggedIn() && (
+          <>
+            <Navbar.Toggle aria-controls="navbarScroll" />
+            <Navbar.Collapse id="navbarScroll">
+              <Nav
+                className="me-auto my-2 my-lg-0"
+                style={{ maxHeight: "100px" }}
+                navbarScroll
+              >
+                <Nav.Link
+                  onClick={(e) => {
+                    navigate("/books");
+                  }}
+                >
+                  Books
+                </Nav.Link>
+                <Nav.Link
+                  onClick={(e) => {
+                    navigate("/users");
+                  }}
+                >
+                  Users
+                </Nav.Link>
+              </Nav>
+              <Nav>
+                <Nav.Link
+                  onClick={(e) => {
+                    Cookies.remove("email", { path: "" });
+                    navigate("/login");
+                  }}
+                >
+                  Log out
+                </Nav.Link>
+              </Nav>
+              {/* <FontAwesomeIcon
             icon={faUser}
             color="#FFF"
             className="profile-icon"
           /> */}
-        </Navbar.Collapse>
+            </Navbar.Collapse>
+          </>
+        )}
       </Container>
     </Navbar>
   );

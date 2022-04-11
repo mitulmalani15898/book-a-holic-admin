@@ -18,6 +18,13 @@
   height: 20px;
 }
 
+.nav-link {
+  color: rgb(200, 196, 196) !important;
+}
+.nav-link:hover {
+  color: rgb(255, 255, 255) !important;
+}
+
 @media screen and (max-width: 768px) {
   .nav-cont {
     margin: 0 10px !important;
