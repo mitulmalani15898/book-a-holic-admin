@@ -7,10 +7,13 @@ This is the group project repository for the course CSCI 5709 - Advanced Topics 
 - _Last Modification Date_: 29 MAR 2022
 - _Deployed Application URL_: <https://bookaholic-admin.herokuapp.com>
 - _Git Repository URL_: <https://git.cs.dal.ca/pthakkar/group3_csci5709_admin>
+- _Admin Username_ : bookaholicadmin@gmail.com
+- _Admin Password_ : root 
 
 ## Authors
 
 - [Jainam Rakeshkumar Shah (B00883898)](mailto:jainam@dal.ca) - _(Maintainer)_
+- [Mitul Pravinbhai Malani (B00869519)](mailto:mt215690@dal.ca) - _(Maintainer)_
 - [Prit Thakkar (B00890731)](mailto:Prit.Thakkar@dal.ca) - _(Maintainer)_
 
 ## Getting Started
