@@ -2,14 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Alert, Table, Pagination } from "react-bootstrap";
+import { Button, Alert, Table } from "react-bootstrap";
 import SearchInput from "../../components/SearchInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getAll } from "../../services/books.service";
+import { getAll, remove } from "../../services/books.service";
 import "./books.css";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import DeleteBookModal from "../../components/DeleteBookModal";
-import { remove } from "../../services/books.service";
 /**
  * @returns the book component, which is essentially a responsive table showing all the books
  * available in the database.
